@@ -1,2 +1,2 @@
 # ngx-acl
-Role-based permissions for Angular 5 and beyond
+Role-based permissions for Angular v5+
