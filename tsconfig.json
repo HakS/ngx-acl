@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-acl": [
+        "dist/ngx-acl"
+      ],
+      "ngx-acl/*": [
+        "dist/ngx-acl/*"
+      ]
+    }
   }
 }
