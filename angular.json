@@ -37,6 +37,133 @@
           }
         }
       }
+    },
+    "acl-test": {
+      "root": "projects/acl-test/",
+      "sourceRoot": "projects/acl-test/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/acl-test",
+            "index": "projects/acl-test/src/index.html",
+            "main": "projects/acl-test/src/main.ts",
+            "polyfills": "projects/acl-test/src/polyfills.ts",
+            "tsConfig": "projects/acl-test/tsconfig.app.json",
+            "assets": [
+              "projects/acl-test/src/favicon.ico",
+              "projects/acl-test/src/assets"
+            ],
+            "styles": [
+              "projects/acl-test/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/acl-test/src/environments/environment.ts",
+                  "with": "projects/acl-test/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "acl-test:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "acl-test:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "acl-test:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/acl-test/src/test.ts",
+            "polyfills": "projects/acl-test/src/polyfills.ts",
+            "tsConfig": "projects/acl-test/tsconfig.spec.json",
+            "karmaConfig": "projects/acl-test/karma.conf.js",
+            "styles": [
+              "projects/acl-test/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/acl-test/src/favicon.ico",
+              "projects/acl-test/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/acl-test/tsconfig.app.json",
+              "projects/acl-test/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "acl-test-e2e": {
+      "root": "projects/acl-test-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/acl-test-e2e/protractor.conf.js",
+            "devServerTarget": "acl-test:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "acl-test:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/acl-test-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngx-acl"
